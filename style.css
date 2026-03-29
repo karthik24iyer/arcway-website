@@ -569,26 +569,117 @@ h3 {
 
 /* ── Self-host ── */
 
-.self-host {
-  border-top: 1px solid var(--border);
-  padding: 80px 24px;
+.self-host { border-top: 1px solid var(--border); }
+
+.selfhost-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+  align-items: start;
 }
 
-.self-host-inner {
-  max-width: 600px;
+.selfhost-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sh-step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.sh-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 1.5px;
+  flex-shrink: 0;
+  padding-top: 3px;
+  width: 24px;
+}
+
+.sh-step h3 { margin-bottom: 10px; }
+
+.sh-note {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.code-block {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 48px 40px;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 12px;
+  color: var(--fg);
+  overflow-x: auto;
+  white-space: pre;
 }
 
-.self-host-inner h2 { margin-bottom: 14px; }
+.c-comment { color: var(--muted); }
+.c-val     { color: var(--teal); }
 
-.self-host-inner p {
+.inline-code {
+  font-family: var(--font);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 12px;
+  color: var(--teal);
+}
+
+.selfhost-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 80px;
+}
+
+.sh-info-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sh-info-label {
+  font-size: 10px;
+  color: var(--teal);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.sh-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.sh-list li {
+  font-size: 13px;
   color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 28px;
-  line-height: 1.7;
+  padding-left: 14px;
+  position: relative;
+}
+
+.sh-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--border);
 }
 
 /* ── Early Access ── */
@@ -828,10 +919,8 @@ body { overflow-x: hidden; }
   .roadmap-grid { grid-template-columns: 1fr; }
 
   /* Self-host */
-  .self-host-inner {
-    padding: 28px 20px;
-    max-width: 100%;
-  }
+  .selfhost-grid { grid-template-columns: 1fr; gap: 28px; }
+  .selfhost-info { position: static; }
 
   /* Early access */
   .early-access { padding: 48px 16px; }
