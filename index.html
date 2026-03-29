@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcway — Remote Terminal Access</title>
+  <meta name="description" content="Arcway gives you secure remote terminal access to your machines from Android, iOS, macOS, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#" class="logo">&gt;_ Arcway</a>
+      <ul>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#get-started">Get Started</a></li>
+        <li><a href="https://github.com/karthik24iyer/arcway-relay-server" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <p class="hero-eyebrow">&gt;_ remote terminal</p>
+      <h1>Your terminal,<br>anywhere you go.</h1>
+      <p class="hero-sub">
+        Arcway gives you secure, real-time terminal access to your Mac or Linux machine
+        from your phone — no VPN, no port forwarding. Works seamlessly with agentic tools
+        like Claude Code, running right from your pocket.
+      </p>
+      <div class="cta-row">
+        <a href="#get-started" class="btn btn-primary">Get Started</a>
+        <a href="#get-started" class="btn btn-ghost">Get Started</a>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how-it-works">
+      <h2>How it works</h2>
+      <p class="section-sub">Three steps and you're connected.</p>
+      <div class="hiw-layout">
+
+        <div class="hiw-steps">
+          <div class="hiw-step">
+            <div class="hiw-step-left">
+              <div class="hiw-dot"><span>1</span></div>
+              <div class="hiw-line"></div>
+            </div>
+            <div class="hiw-step-body">
+              <span class="hiw-tag">Mac / Linux</span>
+              <h3>Run the relay server</h3>
+              <p>A lightweight menu bar app on macOS. Stays in the background, manages your terminal sessions over an encrypted WebSocket connection.</p>
+            </div>
+          </div>
+
+          <div class="hiw-step">
+            <div class="hiw-step-left">
+              <div class="hiw-dot"><span>2</span></div>
+              <div class="hiw-line"></div>
+            </div>
+            <div class="hiw-step-body">
+              <span class="hiw-tag">Android / iOS</span>
+              <h3>Open Arcway on your phone</h3>
+              <p>Sign in, and Arcway discovers your relay instantly. Pick a session and you're in.</p>
+            </div>
+          </div>
+
+          <div class="hiw-step hiw-step--last">
+            <div class="hiw-step-left">
+              <div class="hiw-dot hiw-dot--active"><span>3</span></div>
+            </div>
+            <div class="hiw-step-body">
+              <span class="hiw-tag">Anywhere</span>
+              <h3>Full terminal, in your pocket</h3>
+              <p>Run Claude Code, monitor builds, manage servers — a real PTY session from wherever you are.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hiw-visual">
+          <div class="terminal-mock">
+            <div class="terminal-bar">
+              <span class="t-dot t-red"></span>
+              <span class="t-dot t-yellow"></span>
+              <span class="t-dot t-green"></span>
+              <span class="t-title">arcway — bash</span>
+            </div>
+            <div class="terminal-body">
+              <div class="t-line"><span class="t-prompt">~</span> <span class="t-cmd">claude</span></div>
+              <div class="t-line t-out">Claude Code v1.x  (claude-sonnet-4-6)</div>
+              <div class="t-line t-out t-dim">Type a task or question...</div>
+              <div class="t-line">&nbsp;</div>
+              <div class="t-line"><span class="t-prompt">></span> <span class="t-cmd">run tests and fix any failures</span></div>
+              <div class="t-line t-out"><span class="t-teal">Running</span> jest --watchAll=false</div>
+              <div class="t-line t-out t-dim">PASS src/auth.test.ts</div>
+              <div class="t-line t-out t-dim">PASS src/relay.test.ts</div>
+              <div class="t-line t-out"><span class="t-green">All tests passed</span></div>
+              <div class="t-line">&nbsp;</div>
+              <div class="t-line"><span class="t-cursor">|</span></div>
+            </div>
+          </div>
+          <p class="hiw-visual-caption">Claude Code running remotely via Arcway</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+      <h2>Why Arcway?</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>No VPN, no config</h3>
+          <p>The relay handles connectivity. No port forwarding, no SSH tunnels.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Real PTY sessions</h3>
+          <p>Colors, scrollback, interactive programs — exactly like your desktop terminal.</p>
+        </div>
+        <div class="feature-card">
+          <h3>JWT + TLS secured</h3>
+          <p>Only authenticated clients connect. Nothing is exposed publicly.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Self-hostable</h3>
+          <p>Open-source relay server. Run it on any machine you own.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GET STARTED / DOWNLOADS -->
+    <section class="downloads" id="get-started">
+      <h2>Get Started</h2>
+      <p class="section-sub">Pick your setup — relay on your machine, control from your phone.</p>
+
+      <div class="setup-paths">
+
+        <!-- PATH 1: Mac + Android -->
+        <div class="setup-path">
+          <div class="setup-path-header">
+            <span class="setup-path-label">Setup A</span>
+            <h3>Mac + Android</h3>
+          </div>
+          <ol class="setup-steps">
+            <li>
+              <span class="setup-step-title">Install relay on your Mac</span>
+              <a href="https://github.com/karthik24iyer/arcway-relay-server/releases/latest/download/Arcway.dmg" class="btn btn-platform" target="_blank" rel="noopener">Download DMG</a>
+            </li>
+            <li>
+              <span class="setup-step-title">Install Arcway on your Android phone</span>
+              <a href="https://play.google.com/store/apps/details?id=com.clauderemote.claude_remote_android&pli=1" class="btn btn-platform" target="_blank" rel="noopener">Play Store</a>
+            </li>
+          </ol>
+        </div>
+
+        <!-- PATH 2: Mac + iOS -->
+        <div class="setup-path">
+          <div class="setup-path-header">
+            <span class="setup-path-label">Setup B</span>
+            <h3>Mac + iOS</h3>
+          </div>
+          <ol class="setup-steps">
+            <li>
+              <span class="setup-step-title">Install relay on your Mac</span>
+              <a href="https://github.com/karthik24iyer/arcway-relay-server/releases/latest/download/Arcway.dmg" class="btn btn-platform" target="_blank" rel="noopener">Download DMG</a>
+            </li>
+            <li>
+              <span class="setup-step-title">Install Arcway on your iPhone or iPad</span>
+              <a href="https://apps.apple.com/app/arcway" class="btn btn-platform" target="_blank" rel="noopener">App Store</a>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Linux coming soon -->
+        <div class="setup-path setup-path--soon">
+          <div class="setup-path-header">
+            <span class="setup-path-label">Setup C</span>
+            <h3>Linux + Android / iOS</h3>
+          </div>
+          <p class="soon-note">Linux relay server is in progress. Android and iOS clients will work the same way once available.</p>
+          <span class="badge-soon">Linux — Coming Soon</span>
+        </div>
+
+      </div>
+
+      <!-- WEB / BROWSER -->
+      <div class="web-access">
+        <div class="web-access-left">
+          <h3>Web access <span class="badge-beta">beta</span></h3>
+          <p>No app needed. Access your terminal directly from any browser. An alternative to the Android and macOS apps — same sessions, same relay.</p>
+          <a href="https://claude-relay-server.duckdns.org/" class="btn btn-ghost" target="_blank" rel="noopener">Open Web App</a>
+        </div>
+        <div class="web-access-note">
+          <span class="mono-label">Browser-based control</span>
+          <p>Uses the same relay server as the native apps. Sessions persist across page reloads.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- COMING SOON -->
+    <section class="coming-soon-section">
+      <h2>On the roadmap</h2>
+      <p class="section-sub">What's being built next.</p>
+      <div class="roadmap-grid">
+        <div class="roadmap-card">
+          <span class="roadmap-tag">Agents</span>
+          <h3>Codex &amp; Gemini Agents</h3>
+          <p>Run OpenAI Codex and Google Gemini agentic sessions remotely — not just Claude Code.</p>
+          <span class="badge-soon">Coming Soon</span>
+        </div>
+        <div class="roadmap-card">
+          <span class="roadmap-tag">Interface</span>
+          <h3>Voice Mode</h3>
+          <p>Control your remote terminal with voice commands. Speak your intent, Arcway handles the rest.</p>
+          <span class="badge-soon">Coming Soon</span>
+        </div>
+        <div class="roadmap-card">
+          <span class="roadmap-tag">Platform</span>
+          <h3>Linux Relay</h3>
+          <p>Native relay server support for Linux hosts. Full parity with the macOS menu bar app.</p>
+          <span class="badge-soon">Coming Soon</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELF-HOST -->
+    <section class="self-host">
+      <div class="self-host-inner">
+        <h2>Self-host your relay</h2>
+        <p>
+          Arcway's relay server is open-source. Run it on any machine you own and
+          point all your clients to it. No dependency on any cloud service.
+        </p>
+        <a href="https://github.com/karthik24iyer/arcway-relay-server" class="btn btn-ghost" target="_blank" rel="noopener">arcway-relay-server on GitHub</a>
+      </div>
+    </section>
+
+    <!-- EARLY ACCESS -->
+    <section class="early-access" id="early-access">
+      <div class="ea-inner">
+        <span class="ea-eyebrow">Early Access</span>
+        <h2>Be the first to agent remotely.</h2>
+        <p>Arcway is rolling out to a small group first. Drop your email and we'll send you an invite link when your spot is ready.</p>
+
+        <form class="ea-form" id="ea-form" novalidate>
+          <div class="ea-input-row">
+            <input
+              type="email"
+              id="ea-email"
+              class="ea-input"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+            <button type="submit" class="btn btn-primary ea-submit">Request Access</button>
+          </div>
+          <p class="ea-hint">No spam. Invite only. You'll hear back within a few hours.</p>
+        </form>
+
+        <div class="ea-success hidden" id="ea-success">
+          <div class="ea-success-icon">&gt;_</div>
+          <h3>You're on the list.</h3>
+          <p>Invite link will be in your inbox within a few hours.<br>Happy Agenting, Remotely.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Get your free access key at https://web3forms.com/ using essenkaystudios@gmail.com
+    // Then replace the value below with your key.
+    const WEB3FORMS_KEY = '4582952e-f95c-4869-b0e8-96f0a95e7083';
+
+    const form     = document.getElementById('ea-form');
+    const emailEl  = document.getElementById('ea-email');
+    const submitBtn = form.querySelector('.ea-submit');
+    const success  = document.getElementById('ea-success');
+
+    emailEl.addEventListener('input', () => emailEl.classList.remove('ea-input--error'));
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const email = emailEl.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailEl.classList.add('ea-input--error');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: 'Arcway Early Access Request',
+            from_name: 'Arcway Website',
+            email: email,
+            message: `New early access request from: ${email}`
+          })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          form.classList.add('hidden');
+          success.classList.remove('hidden');
+        } else {
+          throw new Error('submission failed');
+        }
+      } catch {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Request Access';
+        emailEl.classList.add('ea-input--error');
+        emailEl.placeholder = 'Something went wrong, try again';
+      }
+    });
+  </script>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="logo">&gt;_ Arcway</span>
+      <p>Secure remote terminal access, from anywhere.</p>
+      <nav class="footer-links">
+        <a href="https://play.google.com/store/apps/details?id=com.clauderemote.claude_remote_android&pli=1" target="_blank" rel="noopener">Android</a>
+        <a href="https://apps.apple.com/app/arcway" target="_blank" rel="noopener">iOS</a>
+        <a href="https://claude-relay-server.duckdns.org/" target="_blank" rel="noopener">Web (beta)</a>
+        <a href="https://github.com/karthik24iyer/arcway-relay-server" target="_blank" rel="noopener">Relay Server</a>
+        <a href="https://github.com/karthik24iyer/arcway-relay-server" target="_blank" rel="noopener">Relay Server</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
