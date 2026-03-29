@@ -230,14 +230,85 @@
     </section>
 
     <!-- SELF-HOST -->
-    <section class="self-host">
-      <div class="self-host-inner">
-        <h2>Self-host your relay</h2>
-        <p>
-          Arcway's relay server is open-source. Run it on any machine you own and
-          point all your clients to it. No dependency on any cloud service.
-        </p>
-        <a href="https://github.com/karthik24iyer/arcway-relay-server" class="btn btn-ghost" target="_blank" rel="noopener">arcway-relay-server on GitHub</a>
+    <section class="self-host" id="self-host">
+      <h2>Self-host your relay</h2>
+      <p class="section-sub">The relay server is open-source. Run it on any machine — your own server, a VPS, or a home machine behind a domain.</p>
+
+      <div class="selfhost-grid">
+
+        <div class="selfhost-steps">
+          <div class="sh-step">
+            <span class="sh-num">01</span>
+            <div>
+              <h3>Clone &amp; install</h3>
+              <div class="code-block">
+                <span class="c-comment"># Requires Node.js 18+</span>
+                <span>git clone https://github.com/karthik24iyer/arcway-relay-server</span>
+                <span>cd arcway-relay-server &amp;&amp; npm install</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sh-step">
+            <span class="sh-num">02</span>
+            <div>
+              <h3>Set environment variables</h3>
+              <div class="code-block">
+                <span class="c-comment"># Required</span>
+                <span>JWT_SECRET=<span class="c-val">$(openssl rand -base64 32)</span></span>
+                <span>DATABASE_URL=<span class="c-val">postgresql://user:pass@localhost/arcway</span></span>
+                <span>GOOGLE_CLIENT_ID=<span class="c-val">your-google-oauth-client-id</span></span>
+                <span>&nbsp;</span>
+                <span class="c-comment"># Optional</span>
+                <span>PORT=<span class="c-val">8080</span></span>
+                <span>ALLOWED_ORIGINS=<span class="c-val">https://yourdomain.com</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sh-step">
+            <span class="sh-num">03</span>
+            <div>
+              <h3>Run migrations &amp; start</h3>
+              <div class="code-block">
+                <span>node migrate.js</span>
+                <span>npm start</span>
+                <span>&nbsp;</span>
+                <span class="c-comment"># Server listens on 0.0.0.0:8080</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sh-step">
+            <span class="sh-num">04</span>
+            <div>
+              <h3>Point the apps to your server</h3>
+              <p class="sh-note">In the Arcway app settings, enter your relay server URL (e.g. <span class="inline-code">wss://yourdomain.com</span>) to connect to your own instance instead of the default.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="selfhost-info">
+          <div class="sh-info-card">
+            <span class="sh-info-label">Requirements</span>
+            <ul class="sh-list">
+              <li>Node.js 18+</li>
+              <li>PostgreSQL 14+</li>
+              <li>A domain with TLS (required for WSS)</li>
+              <li>Google OAuth client ID</li>
+            </ul>
+          </div>
+          <div class="sh-info-card">
+            <span class="sh-info-label">Quick deploy options</span>
+            <ul class="sh-list">
+              <li>Any Linux VPS (DigitalOcean, Hetzner)</li>
+              <li>Railway / Render (free tier available)</li>
+              <li>Home server behind Cloudflare Tunnel</li>
+            </ul>
+          </div>
+          <a href="https://github.com/karthik24iyer/arcway-relay-server" class="btn btn-ghost" target="_blank" rel="noopener">View source on GitHub</a>
+        </div>
+
       </div>
     </section>
 
