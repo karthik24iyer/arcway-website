@@ -875,13 +875,66 @@ body { overflow-x: hidden; }
   }
 }
 
+/* ── Hamburger button (hidden on desktop) ── */
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 200;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--fg);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+}
+
+/* X state */
+.nav-toggle--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle--open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-toggle--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* ── Phone ── */
 @media (max-width: 600px) {
-  /* Nav: shrink gaps, smaller logo */
-  nav { padding: 0 16px; }
-  nav ul { gap: 14px; }
-  nav ul a { font-size: 12px; }
+  /* Nav: hamburger */
+  nav { padding: 0 16px; position: relative; }
   .logo { font-size: 15px; }
+  .nav-toggle { display: flex; }
+
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(6, 12, 24, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 0;
+  }
+
+  nav ul.nav-open { display: flex; }
+
+  nav ul li a {
+    display: block;
+    padding: 14px 20px;
+    font-size: 14px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav ul li:last-child a { border-bottom: none; }
 
   /* Sections */
   section { padding: 48px 16px; }
@@ -933,8 +986,6 @@ body { overflow-x: hidden; }
 
 /* ── Very small phone (320px) ── */
 @media (max-width: 380px) {
-  nav ul { gap: 10px; }
-  nav ul a { font-size: 11px; letter-spacing: 0; }
   .logo { font-size: 14px; letter-spacing: 0.5px; }
   h2 { font-size: 22px; }
   .hero h1 { font-size: 28px; }

@@ -14,7 +14,10 @@
   <header>
     <nav>
       <a href="#" class="logo">&gt;_ Arcway</a>
-      <ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="nav-menu">
         <li><a href="#how-it-works">How it works</a></li>
         <li><a href="#get-started">Get Started</a></li>
         <li><a href="https://github.com/karthik24iyer/arcway-relay-server" target="_blank" rel="noopener">GitHub</a></li>
@@ -353,6 +356,22 @@
     const emailEl  = document.getElementById('ea-email');
     const submitBtn = form.querySelector('.ea-submit');
     const success  = document.getElementById('ea-success');
+
+    // Nav toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu   = document.getElementById('nav-menu');
+    navToggle.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('nav-open');
+      navToggle.classList.toggle('nav-toggle--open', open);
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('nav-open');
+        navToggle.classList.remove('nav-toggle--open');
+        navToggle.setAttribute('aria-expanded', false);
+      });
+    });
 
     emailEl.addEventListener('input', () => emailEl.classList.remove('ea-input--error'));
 
