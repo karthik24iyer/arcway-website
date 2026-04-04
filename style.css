@@ -600,6 +600,8 @@ h3 {
   width: 24px;
 }
 
+.sh-step > div { flex: 1; min-width: 0; }
+
 .sh-step h3 { margin-bottom: 10px; }
 
 .sh-note {
@@ -974,6 +976,7 @@ body { overflow-x: hidden; }
   /* Self-host */
   .selfhost-grid { grid-template-columns: 1fr; gap: 28px; }
   .selfhost-info { position: static; }
+  .code-block { font-size: 11px; padding: 12px 14px; }
 
   /* Early access */
   .early-access { padding: 48px 16px; }
