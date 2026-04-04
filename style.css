@@ -976,7 +976,7 @@ body { overflow-x: hidden; }
   /* Self-host */
   .selfhost-grid { grid-template-columns: 1fr; gap: 28px; }
   .selfhost-info { position: static; }
-  .code-block { font-size: 11px; padding: 12px 14px; }
+  .code-block { font-size: 11px; padding: 12px 14px; white-space: pre-wrap; overflow-wrap: anywhere; overflow-x: unset; }
 
   /* Early access */
   .early-access { padding: 48px 16px; }
