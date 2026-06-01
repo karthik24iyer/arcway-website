@@ -229,7 +229,7 @@
     <!-- SELF-HOST -->
     <section class="self-host" id="self-host">
       <h2>Self-host your relay</h2>
-      <p class="section-sub">The relay is open-source and pairs to your apps with a 6-character code. One Docker command and you're live — no database, no OAuth setup, no manual TLS.</p>
+      <p class="section-sub">Open-source. Two steps to run your own.</p>
 
       <div class="selfhost-grid">
 
@@ -237,12 +237,10 @@
           <div class="sh-step">
             <span class="sh-num">01</span>
             <div>
-              <h3>Clone &amp; start with Docker</h3>
+              <h3>Start the relay</h3>
               <div class="code-block">
-                <span class="c-comment"># Requires Docker (Compose comes bundled with Docker Desktop)</span>
                 <span>git clone https://github.com/karthik24iyer/arcway-relay-server</span>
                 <span>cd arcway-relay-server</span>
-                <span class="c-comment"># Edit .env — set your DOMAIN (Caddy auto-fetches a Let's Encrypt cert)</span>
                 <span>docker compose up -d</span>
               </div>
             </div>
@@ -251,29 +249,8 @@
           <div class="sh-step">
             <span class="sh-num">02</span>
             <div>
-              <h3>Grab your pair code</h3>
-              <div class="code-block">
-                <span>docker compose exec relay cat /data/.relay-code</span>
-                <span>&nbsp;</span>
-                <span class="c-comment"># Output: a 6-character code, e.g. XK3F9P</span>
-                <span class="c-comment"># Auto-generated on first boot, persisted on a Docker volume.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="sh-step">
-            <span class="sh-num">03</span>
-            <div>
-              <h3>Pair the Mac &amp; phone apps</h3>
-              <p class="sh-note">In each app's login screen, flip the <span class="inline-code">Self Host</span> toggle, paste your relay URL (e.g. <span class="inline-code">https://your-domain.com</span>) and the pair code. The Mac registers as the agent; phones connect to it through the relay.</p>
-            </div>
-          </div>
-
-          <div class="sh-step">
-            <span class="sh-num">04</span>
-            <div>
-              <h3>That's it</h3>
-              <p class="sh-note">Every feature works exactly the same as the hosted Arcway — only the relay box and the pairing flow differ. No tier limits.</p>
+              <h3>Pair your apps</h3>
+              <p class="sh-note">Open Arcway on Mac, toggle <span class="inline-code">Self Host</span>, enter your relay URL. The pair code appears in the app — enter it on your phone the same way.</p>
             </div>
           </div>
         </div>
@@ -282,17 +259,8 @@
           <div class="sh-info-card">
             <span class="sh-info-label">Requirements</span>
             <ul class="sh-list">
-              <li>Docker (Desktop or CLI)</li>
-              <li>A public domain pointing at the host (DuckDNS works free)</li>
-              <li>Ports 80 + 443 reachable for the auto-TLS cert</li>
-            </ul>
-          </div>
-          <div class="sh-info-card">
-            <span class="sh-info-label">Quick deploy options</span>
-            <ul class="sh-list">
-              <li>Any Linux VPS (Hetzner, DigitalOcean, ~$5/mo)</li>
-              <li>Home server behind Cloudflare Tunnel (no public IP needed)</li>
-              <li>Raspberry Pi behind Tailscale Funnel</li>
+              <li>Docker</li>
+              <li>A domain pointing at the host</li>
             </ul>
           </div>
           <a href="https://github.com/karthik24iyer/arcway-relay-server" class="btn btn-ghost" target="_blank" rel="noopener">View source on GitHub</a>
