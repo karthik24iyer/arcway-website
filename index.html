@@ -152,7 +152,7 @@
           <ol class="setup-steps">
             <li>
               <span class="setup-step-title">Install relay on your Mac</span>
-              <a href="https://github.com/karthik24iyer/arcway-relay-server/releases/download/v0.2.0/Arcway.dmg" class="btn btn-platform" target="_blank" rel="noopener">Download DMG</a>
+              <a href="https://github.com/karthik24iyer/arcway-relay-server/releases/download/v1.0.0/Arcway.dmg" class="btn btn-platform" target="_blank" rel="noopener">Download DMG</a>
             </li>
             <li>
               <span class="setup-step-title">Install Arcway on your Android phone</span>
@@ -170,7 +170,7 @@
           <ol class="setup-steps">
             <li>
               <span class="setup-step-title">Install relay on your Mac</span>
-              <a href="https://github.com/karthik24iyer/arcway-relay-server/releases/download/v0.2.0/Arcway.dmg" class="btn btn-platform" target="_blank" rel="noopener">Download DMG</a>
+              <a href="https://github.com/karthik24iyer/arcway-relay-server/releases/download/v1.0.0/Arcway.dmg" class="btn btn-platform" target="_blank" rel="noopener">Download DMG</a>
             </li>
             <li>
               <span class="setup-step-title">Install Arcway on your iPhone or iPad</span>
@@ -212,12 +212,6 @@
       <p class="section-sub">What's being built next.</p>
       <div class="roadmap-grid">
         <div class="roadmap-card">
-          <span class="roadmap-tag">Agents</span>
-          <h3>Codex &amp; Gemini Agents</h3>
-          <p>Run OpenAI Codex and Google Gemini agentic sessions remotely — not just Claude Code.</p>
-          <span class="badge-soon">Coming Soon</span>
-        </div>
-        <div class="roadmap-card">
           <span class="roadmap-tag">Interface</span>
           <h3>Voice Mode</h3>
           <p>Control your remote terminal with voice commands. Speak your intent, Arcway handles the rest.</p>
@@ -235,7 +229,7 @@
     <!-- SELF-HOST -->
     <section class="self-host" id="self-host">
       <h2>Self-host your relay</h2>
-      <p class="section-sub">The relay server is open-source. Run it on any machine — your own server, a VPS, or a home machine behind a domain.</p>
+      <p class="section-sub">The relay is open-source and pairs to your apps with a 6-character code. One Docker command and you're live — no database, no OAuth setup, no manual TLS.</p>
 
       <div class="selfhost-grid">
 
@@ -243,11 +237,13 @@
           <div class="sh-step">
             <span class="sh-num">01</span>
             <div>
-              <h3>Clone &amp; install</h3>
+              <h3>Clone &amp; start with Docker</h3>
               <div class="code-block">
-                <span class="c-comment"># Requires Node.js 18+</span>
+                <span class="c-comment"># Requires Docker (Compose comes bundled with Docker Desktop)</span>
                 <span>git clone https://github.com/karthik24iyer/arcway-relay-server</span>
-                <span>cd arcway-relay-server &amp;&amp; npm install</span>
+                <span>cd arcway-relay-server</span>
+                <span class="c-comment"># Edit .env — set your DOMAIN (Caddy auto-fetches a Let's Encrypt cert)</span>
+                <span>docker compose up -d</span>
               </div>
             </div>
           </div>
@@ -255,16 +251,12 @@
           <div class="sh-step">
             <span class="sh-num">02</span>
             <div>
-              <h3>Set environment variables</h3>
+              <h3>Grab your pair code</h3>
               <div class="code-block">
-                <span class="c-comment"># Required</span>
-                <span>JWT_SECRET=<span class="c-val">$(openssl rand -base64 32)</span></span>
-                <span>DATABASE_URL=<span class="c-val">postgresql://user:pass@localhost/arcway</span></span>
-                <span>GOOGLE_CLIENT_ID=<span class="c-val">your-google-oauth-client-id</span></span>
+                <span>docker compose exec relay cat /data/.relay-code</span>
                 <span>&nbsp;</span>
-                <span class="c-comment"># Optional</span>
-                <span>PORT=<span class="c-val">8080</span></span>
-                <span>ALLOWED_ORIGINS=<span class="c-val">https://yourdomain.com</span></span>
+                <span class="c-comment"># Output: a 6-character code, e.g. XK3F9P</span>
+                <span class="c-comment"># Auto-generated on first boot, persisted on a Docker volume.</span>
               </div>
             </div>
           </div>
@@ -272,21 +264,16 @@
           <div class="sh-step">
             <span class="sh-num">03</span>
             <div>
-              <h3>Run migrations &amp; start</h3>
-              <div class="code-block">
-                <span>node migrate.js</span>
-                <span>npm start</span>
-                <span>&nbsp;</span>
-                <span class="c-comment"># Server listens on 0.0.0.0:8080</span>
-              </div>
+              <h3>Pair the Mac &amp; phone apps</h3>
+              <p class="sh-note">In each app's login screen, flip the <span class="inline-code">Self Host</span> toggle, paste your relay URL (e.g. <span class="inline-code">https://your-domain.com</span>) and the pair code. The Mac registers as the agent; phones connect to it through the relay.</p>
             </div>
           </div>
 
           <div class="sh-step">
             <span class="sh-num">04</span>
             <div>
-              <h3>Point the apps to your server</h3>
-              <p class="sh-note">In the Arcway app settings, enter your relay server URL (e.g. <span class="inline-code">wss://yourdomain.com</span>) to connect to your own instance instead of the default.</p>
+              <h3>That's it</h3>
+              <p class="sh-note">Every feature works exactly the same as the hosted Arcway — only the relay box and the pairing flow differ. No tier limits.</p>
             </div>
           </div>
         </div>
@@ -295,18 +282,17 @@
           <div class="sh-info-card">
             <span class="sh-info-label">Requirements</span>
             <ul class="sh-list">
-              <li>Node.js 18+</li>
-              <li>PostgreSQL 14+</li>
-              <li>A domain with TLS (required for WSS)</li>
-              <li>Google OAuth client ID</li>
+              <li>Docker (Desktop or CLI)</li>
+              <li>A public domain pointing at the host (DuckDNS works free)</li>
+              <li>Ports 80 + 443 reachable for the auto-TLS cert</li>
             </ul>
           </div>
           <div class="sh-info-card">
             <span class="sh-info-label">Quick deploy options</span>
             <ul class="sh-list">
-              <li>Any Linux VPS (DigitalOcean, Hetzner)</li>
-              <li>Railway / Render (free tier available)</li>
-              <li>Home server behind Cloudflare Tunnel</li>
+              <li>Any Linux VPS (Hetzner, DigitalOcean, ~$5/mo)</li>
+              <li>Home server behind Cloudflare Tunnel (no public IP needed)</li>
+              <li>Raspberry Pi behind Tailscale Funnel</li>
             </ul>
           </div>
           <a href="https://github.com/karthik24iyer/arcway-relay-server" class="btn btn-ghost" target="_blank" rel="noopener">View source on GitHub</a>
@@ -315,49 +301,9 @@
       </div>
     </section>
 
-    <!-- EARLY ACCESS -->
-    <section class="early-access" id="early-access">
-      <div class="ea-inner">
-        <span class="ea-eyebrow">Early Access</span>
-        <h2>Be the first to agent remotely.</h2>
-        <p>Arcway is rolling out to a small group first. Drop your email and we'll send you an invite link when your spot is ready.</p>
-
-        <form class="ea-form" id="ea-form" novalidate>
-          <div class="ea-input-row">
-            <input
-              type="email"
-              id="ea-email"
-              class="ea-input"
-              placeholder="you@example.com"
-              autocomplete="email"
-              required
-            />
-            <button type="submit" class="btn btn-primary ea-submit">Request Access</button>
-          </div>
-          <p class="ea-hint">No spam. Invite only. You'll hear back within a few hours.</p>
-        </form>
-
-        <div class="ea-success hidden" id="ea-success">
-          <div class="ea-success-icon">&gt;_</div>
-          <h3>You're on the list.</h3>
-          <p>Invite link will be in your inbox within a few hours.<br>Happy Agenting, Remotely.</p>
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <script>
-    // Get your free access key at https://web3forms.com/ using essenkaystudios@gmail.com
-    // Then replace the value below with your key.
-    const WEB3FORMS_KEY = '4582952e-f95c-4869-b0e8-96f0a95e7083';
-
-    const form     = document.getElementById('ea-form');
-    const emailEl  = document.getElementById('ea-email');
-    const submitBtn = form.querySelector('.ea-submit');
-    const success  = document.getElementById('ea-success');
-
-    // Nav toggle
     const navToggle = document.getElementById('nav-toggle');
     const navMenu   = document.getElementById('nav-menu');
     navToggle.addEventListener('click', () => {
@@ -372,48 +318,6 @@
         navToggle.setAttribute('aria-expanded', false);
       });
     });
-
-    emailEl.addEventListener('input', () => emailEl.classList.remove('ea-input--error'));
-
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      const email = emailEl.value.trim();
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        emailEl.classList.add('ea-input--error');
-        return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
-
-      try {
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({
-            access_key: WEB3FORMS_KEY,
-            subject: 'Arcway Early Access Request',
-            from_name: 'Arcway Website',
-            email: email,
-            message: `New early access request from: ${email}`
-          })
-        });
-
-        const data = await res.json();
-        if (data.success) {
-          form.classList.add('hidden');
-          success.classList.remove('hidden');
-        } else {
-          throw new Error('submission failed');
-        }
-      } catch {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Request Access';
-        emailEl.classList.add('ea-input--error');
-        emailEl.placeholder = 'Something went wrong, try again';
-      }
-    });
   </script>
 
   <footer>
@@ -424,8 +328,7 @@
         <a href="https://play.google.com/store/apps/details?id=com.clauderemote.claude_remote_android&pli=1" target="_blank" rel="noopener">Android</a>
         <a href="https://apps.apple.com/us/app/arcway-remote-agents/id6761489220" target="_blank" rel="noopener">iOS</a>
         <a href="https://claude-relay-server.duckdns.org/" target="_blank" rel="noopener">Web (beta)</a>
-        <a href="https://github.com/karthik24iyer/arcway-relay-server" target="_blank" rel="noopener">Relay Server</a>
-        <a href="https://github.com/karthik24iyer/arcway-relay-server" target="_blank" rel="noopener">Relay Server</a>
+        <a href="https://github.com/karthik24iyer/arcway-relay-server/releases/tag/v1.0.0" target="_blank" rel="noopener">Relay Server</a>
       </nav>
     </div>
   </footer>
