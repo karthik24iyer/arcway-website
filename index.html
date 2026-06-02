@@ -33,9 +33,20 @@
       <h1>Your terminal,<br>anywhere you go.</h1>
       <p class="hero-sub">
         Arcway gives you secure, real-time terminal access to your Mac or Linux machine
-        from your phone — no VPN, no port forwarding. Works seamlessly with agentic tools
-        like Claude Code, running right from your pocket.
+        from your phone — no VPN, no port forwarding.
       </p>
+      <p class="hero-with">Works seamlessly with:</p>
+      <div class="brand-row">
+        <a href="https://claude.com/product/claude-code" class="brand" target="_blank" rel="noopener" aria-label="Claude Code">
+          <img class="brand-mark" src="assets/agent-logos/claude.png" alt="Claude Code"/>
+        </a>
+        <a href="https://gemini.google.com" class="brand" target="_blank" rel="noopener" aria-label="Gemini">
+          <img class="brand-mark" src="assets/agent-logos/gemini.jpg" alt="Gemini"/>
+        </a>
+        <a href="https://openai.com/index/openai-codex/" class="brand" target="_blank" rel="noopener" aria-label="Codex">
+          <img class="brand-mark" src="assets/agent-logos/codex.jpg" alt="Codex"/>
+        </a>
+      </div>
       <div class="cta-row">
         <a href="#get-started" class="btn btn-primary">Get Started</a>
         <a href="#how-it-works" class="btn btn-ghost">How it works</a>
@@ -141,34 +152,28 @@
       <h2>Get Started</h2>
       <p class="section-sub">Install the host on your Mac, then connect from your phone.</p>
 
-      <div class="setup-paths">
+      <div class="platform-icons">
 
-        <!-- HOST: Mac -->
-        <div class="setup-path">
-          <div class="setup-path-header">
-            <span class="setup-path-label">Host</span>
-            <h3>Mac</h3>
-          </div>
-          <a href="https://github.com/karthik24iyer/arcway-relay-server/releases/download/v1.0.0/Arcway.dmg" class="btn btn-platform" target="_blank" rel="noopener">Download DMG</a>
-        </div>
+        <a href="https://github.com/karthik24iyer/arcway-relay-server/releases/download/v1.0.0/Arcway.dmg" class="platform-card" target="_blank" rel="noopener" aria-label="Download Arcway for Mac">
+          <svg class="platform-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2H0c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2h-4zM4 5h16v11H4V5zm8 14c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+          </svg>
+          <span class="platform-name">Mac</span>
+        </a>
 
-        <!-- CLIENT: Android -->
-        <div class="setup-path">
-          <div class="setup-path-header">
-            <span class="setup-path-label">Client</span>
-            <h3>Android</h3>
-          </div>
-          <a href="https://play.google.com/store/apps/details?id=com.clauderemote.claude_remote_android&pli=1" class="btn btn-platform" target="_blank" rel="noopener">Play Store</a>
-        </div>
+        <a href="https://play.google.com/store/apps/details?id=com.clauderemote.claude_remote_android&pli=1" class="platform-card" target="_blank" rel="noopener" aria-label="Get Arcway on Google Play">
+          <svg class="platform-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/>
+          </svg>
+          <span class="platform-name">Android</span>
+        </a>
 
-        <!-- CLIENT: iOS -->
-        <div class="setup-path">
-          <div class="setup-path-header">
-            <span class="setup-path-label">Client</span>
-            <h3>iOS</h3>
-          </div>
-          <a href="https://apps.apple.com/us/app/arcway-remote-agents/id6761489220" class="btn btn-platform" target="_blank" rel="noopener">App Store</a>
-        </div>
+        <a href="https://apps.apple.com/us/app/arcway-remote-agents/id6761489220" class="platform-card" target="_blank" rel="noopener" aria-label="Get Arcway on the App Store">
+          <svg class="platform-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 18H6V4h11v14z"/>
+          </svg>
+          <span class="platform-name">iOS</span>
+        </a>
 
       </div>
 

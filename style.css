@@ -170,10 +170,95 @@ h3 {
 
 .hero-sub {
   max-width: 560px;
-  margin: 0 auto 40px;
+  margin: 0 auto 24px;
   color: var(--muted);
   font-size: 15px;
   line-height: 1.75;
+}
+
+.hero-with {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.platform-icons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.platform-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 28px 36px;
+  min-width: 132px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.03);
+  text-decoration: none;
+  color: var(--fg);
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+.platform-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+.platform-svg {
+  width: 48px;
+  height: 48px;
+  color: var(--fg);
+}
+.platform-name {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--muted);
+}
+.platform-card:hover .platform-name { color: var(--fg); }
+@media (prefers-color-scheme: light) {
+  .platform-card {
+    border-color: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.02);
+  }
+  .platform-card:hover { background: rgba(0, 0, 0, 0.05); }
+}
+@media (max-width: 540px) {
+  .platform-icons { gap: 12px; }
+  .platform-card { padding: 22px 26px; min-width: 100px; }
+  .platform-svg { width: 38px; height: 38px; }
+}
+
+.brand-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-bottom: 32px;
+}
+
+.brand {
+  display: inline-flex;
+  text-decoration: none;
+  transition: transform 0.18s ease;
+}
+.brand:hover { transform: translateY(-1px); }
+.brand-mark {
+  width: 96px;
+  height: 32px;
+  display: block;
+  border-radius: 6px;
+  border: 1px solid #000;
+  background: #ffffff;
+  object-fit: contain;
+  padding: 5px 15px;
+  box-sizing: border-box;
 }
 
 .cta-row {
