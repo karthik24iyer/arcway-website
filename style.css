@@ -185,10 +185,29 @@ h3 {
 
 .platform-icons {
   display: flex;
-  justify-content: center;
-  gap: 18px;
+  justify-content: flex-start;
+  gap: 24px;
   flex-wrap: wrap;
   margin: 0 auto;
+}
+
+.platform-group {
+  margin: 0;
+  padding: 14px 22px 18px;
+  border: 1.5px solid #ffffff;
+  border-radius: 18px;
+  display: flex;
+  gap: 18px;
+  align-items: stretch;
+}
+.platform-group > legend {
+  padding: 0 10px;
+  margin-left: 10px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 .platform-card {
   display: inline-flex;
@@ -229,7 +248,8 @@ h3 {
   .platform-card:hover { background: rgba(0, 0, 0, 0.05); }
 }
 @media (max-width: 540px) {
-  .platform-icons { gap: 12px; }
+  .platform-icons { gap: 16px; justify-content: center; }
+  .platform-group { padding: 12px 16px 14px; gap: 12px; }
   .platform-card { padding: 22px 26px; min-width: 100px; }
   .platform-svg { width: 38px; height: 38px; }
 }
@@ -552,72 +572,6 @@ h3 {
   width: fit-content;
 }
 
-.badge-beta {
-  display: inline-block;
-  background: rgba(71, 151, 248, 0.15);
-  border: 1px solid rgba(71, 151, 248, 0.35);
-  color: var(--primary);
-  border-radius: 6px;
-  padding: 2px 8px;
-  font-size: 11px;
-  font-family: var(--font);
-  vertical-align: middle;
-  letter-spacing: 0.5px;
-}
-
-/* ── Web access ── */
-
-.web-access {
-  margin-top: 28px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 32px 28px;
-  display: flex;
-  align-items: flex-start;
-  gap: 48px;
-  flex-wrap: wrap;
-  transition: border-color 0.2s;
-}
-
-.web-access:hover { border-color: var(--primary); }
-
-.web-access-left { flex: 1; min-width: 220px; }
-
-.web-access-left h3 { margin-bottom: 10px; }
-
-.web-access-left p {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-
-.web-access-note {
-  flex: 1;
-  min-width: 180px;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.mono-label {
-  font-size: 11px;
-  color: var(--teal);
-  letter-spacing: 1.5px;
-  font-weight: 700;
-}
-
-.web-access-note p {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
 /* ── Coming soon / Roadmap ── */
 
 .coming-soon-section { border-top: 1px solid var(--border); }
@@ -699,14 +653,47 @@ h3 {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 14px 16px;
+  padding: 14px 44px 14px 16px;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 3px;
+  font-family: var(--font);
   font-size: 12px;
   color: var(--fg);
   overflow-x: auto;
   white-space: pre;
+}
+
+.code-snippet {
+  position: relative;
+  margin-bottom: 10px;
+}
+.code-snippet:last-child { margin-bottom: 0; }
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface-2, rgba(255,255,255,0.04));
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.copy-btn:hover {
+  color: var(--fg);
+  border-color: rgba(255,255,255,0.3);
+}
+.copy-btn.copied {
+  color: var(--teal);
+  border-color: var(--teal);
 }
 
 .c-comment { color: var(--muted); }
@@ -1046,14 +1033,6 @@ body { overflow-x: hidden; }
   /* Setup paths */
   .setup-paths { grid-template-columns: 1fr; gap: 14px; }
   .setup-path { padding: 22px 18px; }
-
-  /* Web access */
-  .web-access {
-    flex-direction: column;
-    gap: 20px;
-    padding: 22px 18px;
-  }
-  .web-access-note { min-width: unset; }
 
   /* Roadmap */
   .roadmap-grid { grid-template-columns: 1fr; }
