@@ -1,5 +1,0 @@
-[[redirects]]
-  from = "https://arcway-agents.netlify.app/*"
-  to = "https://arcway-agents.com/:splat"
-  status = 301
-  force = true
