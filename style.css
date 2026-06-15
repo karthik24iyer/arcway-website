@@ -217,8 +217,8 @@ h3 {
   padding: 28px 36px;
   min-width: 132px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
   text-decoration: none;
   color: var(--fg);
   transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
@@ -233,6 +233,12 @@ h3 {
   height: 48px;
   color: var(--fg);
 }
+.platform-img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  filter: brightness(0) invert(84%) sepia(20%) saturate(300%) hue-rotate(185deg) brightness(96%);
+}
 .platform-name {
   font-size: 14px;
   font-weight: 600;
@@ -240,18 +246,41 @@ h3 {
   color: var(--muted);
 }
 .platform-card:hover .platform-name { color: var(--fg); }
-@media (prefers-color-scheme: light) {
-  .platform-card {
-    border-color: rgba(0, 0, 0, 0.08);
-    background: rgba(0, 0, 0, 0.02);
-  }
-  .platform-card:hover { background: rgba(0, 0, 0, 0.05); }
+.platform-card--disabled {
+  cursor: default;
+  pointer-events: none;
+  gap: 6px;
+  padding: 15px 36px;
+}
+.platform-card--disabled .platform-name-group {
+  opacity: 0.45;
+}
+.platform-card--disabled .platform-name {
+  font-size: 11px;
+}
+.platform-card--disabled .platform-soon {
+  font-size: 8px;
+}
+.platform-name-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.platform-soon {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
 }
 @media (max-width: 540px) {
   .platform-icons { gap: 16px; justify-content: center; }
   .platform-group { padding: 12px 16px 14px; gap: 12px; }
   .platform-card { padding: 22px 26px; min-width: 100px; }
   .platform-svg { width: 38px; height: 38px; }
+  .platform-img { width: 38px; height: 38px; }
+  .platform-card--disabled { padding: 14px 26px; gap: 4px; }
 }
 
 .brand-row {
