@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 
@@ -16,6 +16,7 @@
   <nav class="nav-links">
     <a href="#features">Features</a>
     <a href="#get">Download</a>
+    <a href="#pricing">Pricing</a>
     <a href="#self-host">Self-host</a>
     <a href="#faq">FAQ</a>
   </nav>
@@ -28,8 +29,32 @@
   <section class="hero grain">
     <p class="wordmark">&gt;_ arcway<span class="caret"></span></p>
     <h1>your agents,<br>in your pocket</h1>
-    <div class="hero-shot">
-      <img src="assets/shots/hero.webp" alt="Claude Code session mirrored from a MacBook to an iPhone with Arcway" width="1625" height="968">
+    <div class="hero-shot" role="img" aria-label="The same Claude Code session on a Mac terminal and in the Arcway phone app">
+      <div class="laptop">
+        <div class="lid">
+          <div class="term">
+            <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span>claude — ~/Projects/arcway</span></div>
+            <div class="term-body">
+              <p class="l" style="--i:0"><span class="o">✻</span> <b class="o">Claude Code</b> <span class="d">v2.1.283</span></p>
+              <p class="l d" style="--i:0">&nbsp;&nbsp;Opus 5.5 · Claude Max · ~/Projects/arcway</p>
+              <p class="l u" style="--i:1">&gt; add the drawio MCP server</p>
+              <p class="l" style="--i:2"><span class="w">●</span> I can create a <code>.mcp.json</code> in this project. Want me to?</p>
+              <p class="l u" style="--i:3">&gt; no, add it using claude mcp add ....</p>
+              <p class="l" style="--i:4"><span class="r">●</span> <b>Bash</b>(claude mcp add drawio --command npx --args "-y" "drawio-mcp-server")</p>
+              <p class="l d" style="--i:4">&nbsp;&nbsp;⎿ <span class="r">error: unknown option '--command'</span></p>
+              <p class="l" style="--i:5"><span class="g">●</span> <b>Bash</b>(claude mcp add --help)</p>
+              <p class="l d" style="--i:5">&nbsp;&nbsp;⎿ Usage: claude mcp add [options] &lt;name&gt; &lt;command&gt; [args...]</p>
+              <p class="l" style="--i:6"><span class="g">●</span> <b>Bash</b>(claude mcp add drawio -- npx -y drawio-mcp-server)</p>
+              <p class="l d" style="--i:6">&nbsp;&nbsp;⎿ Added stdio MCP server drawio to local config</p>
+              <p class="l" style="--i:7"><span class="w">●</span> Done! <b>drawio</b> is configured in <code>~/.claude.json</code> and ready to use.</p>
+              <p class="l prompt" style="--i:8">&gt; <span class="cur"></span></p>
+              <p class="l mode" style="--i:8">⏵⏵ bypass permissions on</p>
+            </div>
+          </div>
+        </div>
+        <div class="base"></div>
+      </div>
+      <img class="hero-phone" src="assets/shots/chat.webp" alt="" width="850" height="1850">
     </div>
   </section>
 
@@ -100,6 +125,51 @@
         <span class="feat-icon">&#x26A1;</span>
         <h3>Approve, bypass, or step in.</h3>
         <p>Switch permission modes on the fly. Let the agent run while you're on the train, and jump in the moment it asks.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing wrap" id="pricing">
+    <p class="eyebrow">Arcway Forever</p>
+    <h2>Subscriptions?<br>Not here.</h2>
+    <p class="motto">So we made Arcway something you <em>buy</em>, not <em>rent</em>.</p>
+
+    <div class="plans">
+      <article class="plan">
+        <h3>Free</h3>
+        <p class="price">$0</p>
+        <p class="plan-sub">Try it with Claude Code</p>
+        <ul>
+          <li>1 host, 3 sessions</li>
+          <li>Claude Code</li>
+          <li>Hosted relay</li>
+        </ul>
+      </article>
+
+      <article class="plan plan--hero">
+        <span class="tag small">BUY ONCE</span>
+        <h3>Forever</h3>
+        <p class="price">$9.99<small>one time</small></p>
+        <p class="plan-sub">Buy once, use forever</p>
+        <ul>
+          <li><b>Unlimited</b> hosts &amp; sessions — every Mac and Linux box you own</li>
+          <li><b>Every agent</b> — Claude, Codex, Antigravity &amp; Copilot, same simple UX</li>
+          <li><b>Lifetime support</b> + upcoming features: voice mode, notifications, phone clipboard &amp; more</li>
+        </ul>
+        <a href="#get" class="pill-btn">Get Arcway Forever</a>
+      </article>
+
+      <article class="plan">
+        <h3>Self-host</h3>
+        <p class="price">$0</p>
+        <p class="plan-sub">You host it, you own it</p>
+        <ul>
+          <li>Every Forever feature</li>
+          <li>Your own relay, your own domain</li>
+          <li>Open source</li>
+        </ul>
+        <a href="#self-host" class="text-link">Run your relay &rarr;</a>
       </article>
     </div>
   </section>
@@ -181,12 +251,16 @@ docker compose up -d">Copy</button>
       <p>Sessions are end-to-end encrypted between your phone and your Mac. The relay only forwards bytes and stores nothing.</p>
     </details>
     <details>
-      <summary>Is it free?</summary>
-      <p>Self-hosting the relay is free forever with every feature. The hosted relay has a free tier with an optional Pro upgrade.</p>
+      <summary>How much does it cost?</summary>
+      <p>Arcway is free for 1 host and 3 Claude Code sessions. Arcway Forever is a one-time $9.99 purchase — no subscription — that unlocks unlimited hosts and sessions, every agent, and lifetime updates. Self-hosting the relay gets you everything for free.</p>
+    </details>
+    <details>
+      <summary>Is it a subscription?</summary>
+      <p>No. You pay once and it's yours, including future features. Already bought it? Use Restore Purchases in the app.</p>
     </details>
     <details>
       <summary>What's next?</summary>
-      <p>Voice mode, Linux host, and support for Cursor, VS Code, Windsurf and more.</p>
+      <p>Voice mode, notifications, phone clipboard, a Linux host, and support for Cursor, VS Code, Windsurf and more. Forever owners get all of it.</p>
     </details>
   </section>
 
